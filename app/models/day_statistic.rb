@@ -10,7 +10,7 @@ class DayStatistic < ApplicationRecord
     apv: 13_758
   }.freeze
 
-  def results_on_today
+  def remains
     {
       apv: TOTAL_AT_BEGINNING[:apv] - apv,
       tanks: TOTAL_AT_BEGINNING[:tanks] - tanks,

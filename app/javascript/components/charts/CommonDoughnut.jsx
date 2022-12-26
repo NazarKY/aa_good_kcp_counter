@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
-const CommonDoughnut = ({ dayData, totalData }) => {
+const CommonDoughnut = ({ type, destroyed, remains }) => {
   const data = {
-    labels: ['Залишилось', 'Знищених'],
+    labels: ['Remains', 'Destroyed'],
     datasets: [
       {
-        label: '% танків',
-        data: [25, 75],
+        label: type,
+        data: [remains[type], destroyed[type]],
         fill: false,
         lineTension: 0.0,
         hoverBackgroundColor: ["#56d7a3", "#fe8a5d"],
@@ -19,7 +19,7 @@ const CommonDoughnut = ({ dayData, totalData }) => {
         borderRadius: [0, { outerEnd: 30, innerEnd: 30, innerStart: 0, outerStart: 0 }],
         spacing: -7,
         cutout: 110,
-        rotation: 273,
+        rotation: -28,
       },
     ],
   };
@@ -29,9 +29,6 @@ const CommonDoughnut = ({ dayData, totalData }) => {
       duration: 5000,
     },
   };
-
-  console.log(dayData)
-  console.log(totalData)
 
   return (
     <div className='chart-item'>

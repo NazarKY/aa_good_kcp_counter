@@ -7,8 +7,8 @@ import CommonDoughnut from "./charts/CommonDoughnut";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
-  const [dayData, setDayData] = useState({});
-  const [totalData, setTotalData] = useState({});
+  const [destroyed, setDestroyed] = useState({});
+  const [remains, setRemains] = useState({});
 
   useEffect(() => {
     getBeginningTotal();
@@ -16,10 +16,10 @@ const Dashboard = () => {
   }, []);
 
   const getBeginningTotal = async () => {
-    const url = "/api/v1/day_statistic/index";
+    const url = "/api/v1/day_statistic/remains";
     try {
       const response = await axios.get(url);
-      setTotalData(response.data);
+      setRemains(response.data);
     } catch(error) {
       console.log(error);
     }
@@ -29,7 +29,7 @@ const Dashboard = () => {
     const url = "/api/v1/show/1";
     try {
       const response = await axios.get(url);
-      setDayData(response.data);
+      setDestroyed(response.data);
     } catch(error) {
       console.log(error);
     }
@@ -39,8 +39,9 @@ const Dashboard = () => {
     <div className='global-container'>
       <div className='chart-item'>
         <CommonDoughnut
-          dayData={dayData}
-          totalData={totalData}
+          type={'tanks'}
+          destroyed={destroyed}
+          remains={remains}
         />
       </div>
     </div>

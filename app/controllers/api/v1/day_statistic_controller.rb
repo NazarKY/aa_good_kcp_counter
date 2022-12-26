@@ -3,10 +3,10 @@
 module Api
   module V1
     class DayStatisticController < ApplicationController
-      before_action :set_day_static, only: %i[show destroy]
+      before_action :set_day_static, only: %i[show destroy remains]
 
-      def index
-        render json: DayStatistic::TOTAL_AT_BEGINNING
+      def remains
+        render json: @day_static.remains
       end
 
       def create
@@ -14,7 +14,7 @@ module Api
       end
 
       def show
-        render json: @day_static.results_on_today
+        render json: @day_static
       end
 
       def destroy
