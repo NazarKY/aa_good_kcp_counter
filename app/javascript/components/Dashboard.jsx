@@ -1,44 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import axios from "axios";
+import CommonDoughnut from "./charts/CommonDoughnut";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
-  const data = {
-    labels: ['Залишилось', 'Знищених'],
-    datasets: [
-      {
-        label: '% танків',
-        data: [25, 75],
-        fill: false,
-        lineTension: 0.0,
-        hoverBackgroundColor: ["#56d7a3", "#fe8a5d"],
-        backgroundColor: [
-          "#83b1cf",
-          "#fdee4B",
-        ],
-        borderWidth: 0,
-        borderRadius: [0, { outerEnd: 30, innerEnd: 30, innerStart: 0, outerStart: 0 }],
-        spacing: -7,
-        cutout: 110,
-        rotation: 273,
-      },
-    ],
+  const [dayData, setDayData] = useState({});
+  const [totalData, setTotalData] = useState({});
+
+  useEffect(() => {
+    getBeginningTotal();
+    getTodayStatistic();
+  }, []);
+
+  const getBeginningTotal = async () => {
+    const url = "/api/v1/day_statistic/index";
+    try {
+      const response = await axios.get(url);
+      setTotalData(response.data);
+    } catch(error) {
+      console.log(error);
+    }
   };
 
-  const options = {
-    animation: {
-      duration: 5000,
-    },
+  const getTodayStatistic = async () => {
+    const url = "/api/v1/show/1";
+    try {
+      const response = await axios.get(url);
+      setDayData(response.data);
+    } catch(error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className='global-container'>
       <div className='chart-item'>
-        <Doughnut
-          data={data}
-          options={options}
+        <CommonDoughnut
+          dayData={dayData}
+          totalData={totalData}
         />
       </div>
     </div>
@@ -46,9 +48,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-// animation: {
-//   onComplete: ()=>{
-//     console.log("Can no longer click on legend item to hide line");
-//   }
-// },
