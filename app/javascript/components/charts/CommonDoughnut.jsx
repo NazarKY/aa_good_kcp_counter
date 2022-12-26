@@ -11,14 +11,15 @@ const totalAtBeginning = {
 }
 
 const CommonDoughnut = ({ type, destroyed }) => {
-  const percentageOfDestroyed = ((destroyed[type]/totalAtBeginning[type])*100).toFixed( 2 )
-  const remains = totalAtBeginning[type] - destroyed[type]
+  const percentageOfDestroyed = ((destroyed[type]/totalAtBeginning[type])*100).toFixed( 2 );
+  const remains = totalAtBeginning[type] - destroyed[type];
+  const label = type.replace('_', ' ')
 
   const data = {
     labels: [`Destroyed: ${destroyed[type]}`, `Remains: ${remains}`],
     datasets: [
       {
-        label: type,
+        label: label,
         data: [destroyed[type], remains],
         fill: false,
         lineTension: 0.0,
@@ -66,7 +67,7 @@ const CommonDoughnut = ({ type, destroyed }) => {
   return (
     <div className='chart-item'>
       <div className='center-legend'>
-        <div className='type-label'>{type.replace('_', ' ')}</div>
+        <div className='type-label'>{label}</div>
         <div className='total'>Total was: <span className='total-number'>{totalAtBeginning[type]}</span></div>
         <div className='percentage'>{percentageOfDestroyed}%</div>
       </div>
