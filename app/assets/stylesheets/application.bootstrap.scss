@@ -2,9 +2,14 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 body {
-  background-color: lavenderblush;
+  background-color: white;
+  padding: 30px;
 }
 
 .chart-item {
-  height: 300px;
+  height: 315px;
+  width: 300px;
+  background-color: rgb(240, 240, 240);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
