@@ -31,55 +31,53 @@ const NewDayStatistic = ({ show, setShow }) => {
   };
 
   return (
-    <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add New Day Statistic</Modal.Title>
-        </Modal.Header>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Add New Day Statistic</Modal.Title>
+      </Modal.Header>
 
-        <Modal.Body>
-          <div className="form-floating mb-3">
-            <input type="text" className="form-control" id="pig_dogs" onChange={handleChange} />
-            <label htmlFor="pigDogs">PigDogs</label>
-          </div>
+      <Modal.Body>
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="pig_dogs" onChange={handleChange} />
+          <label htmlFor="pigDogs">PigDogs</label>
+        </div>
 
-          <div className="form-floating mb-3">
-            <input type="text" className="form-control" id="tanks" onChange={handleChange} />
-            <label htmlFor="tanks">Tanks</label>
-          </div>
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="tanks" onChange={handleChange} />
+          <label htmlFor="tanks">Tanks</label>
+        </div>
 
-          <div className="form-floating mb-3">
-            <input type="text" className="form-control" id="apv" onChange={handleChange} />
-            <label htmlFor="apv">APV</label>
-          </div>
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="apv" onChange={handleChange} />
+          <label htmlFor="apv">APV</label>
+        </div>
 
-          <div className="form-floating mb-3">
-            <input type="text" className="form-control" id="artillery" onChange={handleChange} />
-            <label htmlFor="artillery">Artillery</label>
-          </div>
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="artillery" onChange={handleChange} />
+          <label htmlFor="artillery">Artillery</label>
+        </div>
 
-          <div className="form-floating mb-3">
-            <input type="text" className="form-control" id="mlrs" onChange={handleChange} />
-            <label htmlFor="mlrs">MLRS</label>
-          </div>
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="mlrs" onChange={handleChange} />
+          <label htmlFor="mlrs">MLRS</label>
+        </div>
 
-          <div className="form-floating mb-3">
-            <input type="text" className="form-control" id="aircraft" onChange={handleChange} />
-            <label htmlFor="aircraft">Aircraft</label>
-          </div>
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="aircraft" onChange={handleChange} />
+          <label htmlFor="aircraft">Aircraft</label>
+        </div>
 
-          <div className="form-floating mb-3">
-            <input type="text" className="form-control" id="helicopters" onChange={handleChange} />
-            <label htmlFor="helicopters">Helicopters</label>
-          </div>
-        </Modal.Body>
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="helicopters" onChange={handleChange} />
+          <label htmlFor="helicopters">Helicopters</label>
+        </div>
+      </Modal.Body>
 
-        <Modal.Footer>
-          <Button variant="outline-secondary" onClick={handleClose}>Close</Button>
-          <Button variant="outline-primary" onClick={saveNewDayStatistic}>Save</Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+      <Modal.Footer>
+        <Button variant="outline-secondary" onClick={handleClose}>Close</Button>
+        <Button variant="outline-primary" onClick={saveNewDayStatistic}>Save</Button>
+      </Modal.Footer>
+    </Modal>
   )
 };
 
