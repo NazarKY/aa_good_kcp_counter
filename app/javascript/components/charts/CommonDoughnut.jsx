@@ -63,6 +63,7 @@ const CommonDoughnut = ({ type, destroyed, remains }) => {
   return (
     <div className='chart-item'>
       <div>
+        <div className='type-label'>{type}</div>
         <div className='total'>Total was: {totalAtBeginning[type]}</div>
         <div className='percentage'>{percentageOfDestroyed}%</div>
       </div>

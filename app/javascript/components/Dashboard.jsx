@@ -36,16 +36,28 @@ const Dashboard = () => {
   };
 
   return (
-    <div className='global-container'>
-      <CommonDoughnut type={'tanks'} destroyed={destroyed} remains={remains} />
+    <div className='global-container container text-center'>
+      <div className="row">
+        <div className="col">
+          <CommonDoughnut type={'tanks'} destroyed={destroyed} remains={remains} />
+        </div>
+        <div className="col"></div>
+        <div className="col">
+          <CommonDoughnut type={'apv'} destroyed={destroyed} remains={remains} />
+        </div>
+      </div>
 
-      <CommonDoughnut type={'apv'} destroyed={destroyed} remains={remains} />
-
-      <CommonDoughnut type={'artillery'} destroyed={destroyed} remains={remains} />
-
-      <CommonDoughnut type={'helicopters'} destroyed={destroyed} remains={remains} />
-
-      <CommonDoughnut type={'aircraft'} destroyed={destroyed} remains={remains} />
+      <div className="row">
+        <div className="col">
+          <CommonDoughnut type={'artillery'} destroyed={destroyed} remains={remains} />
+        </div>
+        <div className="col">
+          <CommonDoughnut type={'helicopters'} destroyed={destroyed} remains={remains} />
+        </div>
+        <div className="col">
+          <CommonDoughnut type={'aircraft'} destroyed={destroyed} remains={remains} />
+        </div>
+      </div>
     </div>
   );
 };
