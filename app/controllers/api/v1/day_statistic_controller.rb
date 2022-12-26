@@ -6,7 +6,10 @@ module Api
       before_action :set_day_static, only: %i[show destroy]
 
       def create
-        render json: {}
+        day_static = DayStatistic.create!(day_static_params)
+        return render json: day_static if day_static
+
+        render json: day_static.errors
       end
 
       def show
@@ -20,7 +23,7 @@ module Api
       private
 
       def day_static_params
-        params.permit(:pig_dogs, :artillery, :helicopters, :aircraft, :tanks, :apv)
+        params.require(:day_statistic).permit(:pig_dogs, :artillery, :helicopters, :aircraft, :tanks, :apv)
       end
 
       def set_day_static
