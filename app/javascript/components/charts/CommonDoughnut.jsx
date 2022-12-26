@@ -65,11 +65,12 @@ const CommonDoughnut = ({ type, destroyed }) => {
 
   return (
     <div className='chart-item'>
-      <div>
+      <div className='center-legend'>
         <div className='type-label'>{type.replace('_', ' ')}</div>
         <div className='total'>Total was: <span className='total-number'>{totalAtBeginning[type]}</span></div>
         <div className='percentage'>{percentageOfDestroyed}%</div>
       </div>
+
       <Doughnut data={data} options={options} />
     </div>
   );
