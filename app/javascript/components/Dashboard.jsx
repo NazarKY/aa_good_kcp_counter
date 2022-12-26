@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommonDoughnut from "./charts/CommonDoughnut";
+import NewDayStatistic from "./modals/NewDayStatistic";
 
 const Dashboard = () => {
   const [destroyed, setDestroyed] = useState({});
+  const [showAddNew, setShowAddNew] = useState(false);
 
   useEffect(() => {
     getTodayStatistic();
   }, []);
+
+  const handleShowAddNew = () => setShowAddNew(true);
 
   const getTodayStatistic = async () => {
     const url = "/api/v1/show/1";
@@ -22,7 +26,7 @@ const Dashboard = () => {
   return (
     <div className='global-container container text-center'>
       <div className='menu-bar'>
-        <button type="button" className="btn btn-outline-warning">
+        <button type="button" className="btn btn-outline-warning" onClick={handleShowAddNew}>
           <i className="bi bi-plus-lg"></i>
         </button>
       </div>
@@ -50,6 +54,8 @@ const Dashboard = () => {
           <CommonDoughnut type={'aircraft'} destroyed={destroyed} />
         </div>
       </div>
+
+      <NewDayStatistic show={showAddNew} setShow={setShowAddNew} />
     </div>
   );
 };
