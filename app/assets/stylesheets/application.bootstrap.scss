@@ -2,16 +2,32 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 body {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(240, 240, 240);
   padding: 30px;
 }
 
 .chart-item {
-  height: 315px;
-  width: 300px;
-  background-color: rgb(180, 180, 180);
+  height: 340px;
+  width: 330px;
+  background-color: rgb(220, 220, 220);
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   display: inline-block;
   margin: 20px;
+  canvas {
+    margin-top: -95px;
+  }
+  div {
+    position: relative;
+    top: 70px;
+    text-align: center;
+    .percentage {
+      color: #fdee4B;
+      font-size: xxx-large;
+    }
+    .total {
+      color: #83b1cf;
+      font-weight: bold;
+    }
+  }
 }

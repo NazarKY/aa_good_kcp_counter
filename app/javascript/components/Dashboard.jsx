@@ -40,6 +40,12 @@ const Dashboard = () => {
       <CommonDoughnut type={'tanks'} destroyed={destroyed} remains={remains} />
 
       <CommonDoughnut type={'apv'} destroyed={destroyed} remains={remains} />
+
+      <CommonDoughnut type={'artillery'} destroyed={destroyed} remains={remains} />
+
+      <CommonDoughnut type={'helicopters'} destroyed={destroyed} remains={remains} />
+
+      <CommonDoughnut type={'aircraft'} destroyed={destroyed} remains={remains} />
     </div>
   );
 };

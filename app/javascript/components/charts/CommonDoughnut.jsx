@@ -1,9 +1,20 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
+const totalAtBeginning = {
+  pig_dogs: 900000,
+  artillery: 5689,
+  helicopters: 961,
+  aircraft: 1379,
+  tanks: 3300,
+  apv: 13758
+}
+
 const CommonDoughnut = ({ type, destroyed, remains }) => {
+  const percentageOfDestroyed = ((destroyed[type]/totalAtBeginning[type])*100).toFixed( 2 )
+
   const data = {
-    labels: ['Destroyed', 'Remains'],
+    labels: [`Destroyed: ${destroyed[type]}`, `Remains: ${remains[type]}`],
     datasets: [
       {
         label: type,
@@ -20,7 +31,7 @@ const CommonDoughnut = ({ type, destroyed, remains }) => {
         ],
         borderWidth: 0,
         borderRadius: 5,
-        cutout: 110,
+        cutout: 120,
       },
     ],
   };
@@ -29,18 +40,33 @@ const CommonDoughnut = ({ type, destroyed, remains }) => {
     animation: {
       duration: 5000,
     },
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 14,
+            weight: 'bold'
+          }
+        }
+      },
+      title: {
+        text: type,
+        display: true,
+        padding: {
+          top: 10,
+          bottom: 30
+        }
+      }
+    }
   };
-
-  console.log(type)
-  console.log(remains[type])
-  console.log(destroyed[type])
 
   return (
     <div className='chart-item'>
-      <Doughnut
-        data={data}
-        options={options}
-      />
+      <div>
+        <div className='total'>Total was: {totalAtBeginning[type]}</div>
+        <div className='percentage'>{percentageOfDestroyed}%</div>
+      </div>
+      <Doughnut data={data} options={options} />
     </div>
   );
 }
