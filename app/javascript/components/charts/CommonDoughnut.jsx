@@ -1,5 +1,8 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const totalAtBeginning = {
   pig_dogs: 900000,
@@ -17,50 +20,24 @@ const CommonDoughnut = ({ type, destroyed }) => {
 
   const data = {
     labels: [`Destroyed: ${destroyed[type]}`, `Remains: ${remains}`],
-    datasets: [
-      {
-        label: label,
-        data: [destroyed[type], remains],
-        fill: false,
-        lineTension: 0.0,
-        hoverBackgroundColor: [
-          "#fe8a5d",
-          "#56d7a3"
-        ],
-        backgroundColor: [
-          "#fdee4B",
-          "#83b1cf",
-        ],
-        borderWidth: 0,
-        borderRadius: 5,
-        cutout: 130,
-      },
-    ],
+    datasets: [{
+      label: label,
+      data: [destroyed[type], remains],
+      fill: false,
+      lineTension: 0.0,
+      hoverBackgroundColor: ["#fe8a5d", "#56d7a3"],
+      backgroundColor: ["#fdee4B", "#83b1cf"],
+      borderWidth: 0,
+      borderRadius: 5,
+      cutout: 130,
+    }],
   };
 
   const options = {
-    animation: {
-      duration: 5000,
-    },
+    animation: { duration: 5000 },
     plugins: {
-      legend: {
-        labels: {
-          color: '#444444',
-          font: {
-            size: 14,
-            weight: 'bold'
-          }
-
-        }
-      },
-      title: {
-        text: type,
-        display: true,
-        padding: {
-          top: 10,
-          bottom: 30
-        }
-      }
+      legend: { labels: { color: '#444444', font: { size: 14, weight: 'bold' } } },
+      title: { text: type, display: true, padding: { top: 10, bottom: 30 } }
     }
   };
 

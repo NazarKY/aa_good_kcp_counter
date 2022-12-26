@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import axios from "axios";
 import CommonDoughnut from "./charts/CommonDoughnut";
-
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const [destroyed, setDestroyed] = useState({});
@@ -24,6 +21,12 @@ const Dashboard = () => {
 
   return (
     <div className='global-container container text-center'>
+      <div className='menu-bar'>
+        <button type="button" className="btn btn-outline-warning">
+          <i className="bi bi-plus-lg"></i>
+        </button>
+      </div>
+
       <div className="row">
         <div className="col">
           <CommonDoughnut type={'tanks'} destroyed={destroyed} />

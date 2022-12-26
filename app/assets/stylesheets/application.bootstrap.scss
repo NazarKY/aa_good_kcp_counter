@@ -14,14 +14,26 @@ body::after {
   z-index: -1;
 }
 
+div.menu-bar {
+  position: fixed;
+  left: 0px;
+  top: 40%;
+  margin: auto;
+  width: 60px;
+  background-color: rgb(250, 250, 250);
+  padding: 10px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 0 10px 10px 0;
+}
+
 div.row {
-  margin-bottom: 40px;
+  margin: 40px 0px;
 }
 
 .chart-item {
   height: 370px;
   width: 360px;
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(250, 250, 250);
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   display: inline-block;
@@ -40,6 +52,7 @@ div.row {
     .percentage {
       color: #fdee4B;
       font-size: xxx-large;
+      font-weight: bold;
     }
     .total {
       color: #444444;
