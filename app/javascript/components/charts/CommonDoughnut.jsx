@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
 const CommonDoughnut = ({ type, destroyed, remains }) => {
   const data = {
-    labels: ['Remains', 'Destroyed'],
+    labels: ['Destroyed', 'Remains'],
     datasets: [
       {
         label: type,
-        data: [remains[type], destroyed[type]],
+        data: [destroyed[type], remains[type] ],
         fill: false,
         lineTension: 0.0,
-        hoverBackgroundColor: ["#56d7a3", "#fe8a5d"],
+        hoverBackgroundColor: [
+          "#fe8a5d",
+          "#56d7a3"
+        ],
         backgroundColor: [
-          "#83b1cf",
           "#fdee4B",
+          "#83b1cf",
         ],
         borderWidth: 0,
-        borderRadius: [0, { outerEnd: 30, innerEnd: 30, innerStart: 0, outerStart: 0 }],
-        spacing: -7,
+        borderRadius: 5,
         cutout: 110,
-        rotation: -28,
       },
     ],
   };
@@ -29,6 +30,10 @@ const CommonDoughnut = ({ type, destroyed, remains }) => {
       duration: 5000,
     },
   };
+
+  console.log(type)
+  console.log(remains[type])
+  console.log(destroyed[type])
 
   return (
     <div className='chart-item'>

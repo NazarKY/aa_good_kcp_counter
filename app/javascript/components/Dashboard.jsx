@@ -37,13 +37,9 @@ const Dashboard = () => {
 
   return (
     <div className='global-container'>
-      <div className='chart-item'>
-        <CommonDoughnut
-          type={'tanks'}
-          destroyed={destroyed}
-          remains={remains}
-        />
-      </div>
+      <CommonDoughnut type={'tanks'} destroyed={destroyed} remains={remains} />
+
+      <CommonDoughnut type={'apv'} destroyed={destroyed} remains={remains} />
     </div>
   );
 };
