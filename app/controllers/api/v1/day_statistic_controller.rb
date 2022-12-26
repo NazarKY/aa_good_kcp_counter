@@ -3,11 +3,7 @@
 module Api
   module V1
     class DayStatisticController < ApplicationController
-      before_action :set_day_static, only: %i[show destroy remains]
-
-      def remains
-        render json: @day_static.remains
-      end
+      before_action :set_day_static, only: %i[show destroy]
 
       def create
         render json: {}

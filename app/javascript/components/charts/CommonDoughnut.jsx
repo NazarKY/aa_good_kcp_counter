@@ -10,15 +10,16 @@ const totalAtBeginning = {
   apv: 13758
 }
 
-const CommonDoughnut = ({ type, destroyed, remains }) => {
+const CommonDoughnut = ({ type, destroyed }) => {
   const percentageOfDestroyed = ((destroyed[type]/totalAtBeginning[type])*100).toFixed( 2 )
+  const remains = totalAtBeginning[type] - destroyed[type]
 
   const data = {
-    labels: [`Destroyed: ${destroyed[type]}`, `Remains: ${remains[type]}`],
+    labels: [`Destroyed: ${destroyed[type]}`, `Remains: ${remains}`],
     datasets: [
       {
         label: type,
-        data: [destroyed[type], remains[type] ],
+        data: [destroyed[type], remains],
         fill: false,
         lineTension: 0.0,
         hoverBackgroundColor: [
@@ -31,7 +32,7 @@ const CommonDoughnut = ({ type, destroyed, remains }) => {
         ],
         borderWidth: 0,
         borderRadius: 5,
-        cutout: 120,
+        cutout: 130,
       },
     ],
   };
@@ -43,10 +44,12 @@ const CommonDoughnut = ({ type, destroyed, remains }) => {
     plugins: {
       legend: {
         labels: {
+          color: '#444444',
           font: {
             size: 14,
             weight: 'bold'
           }
+
         }
       },
       title: {
@@ -63,8 +66,8 @@ const CommonDoughnut = ({ type, destroyed, remains }) => {
   return (
     <div className='chart-item'>
       <div>
-        <div className='type-label'>{type}</div>
-        <div className='total'>Total was: {totalAtBeginning[type]}</div>
+        <div className='type-label'>{type.replace('_', ' ')}</div>
+        <div className='total'>Total was: <span className='total-number'>{totalAtBeginning[type]}</span></div>
         <div className='percentage'>{percentageOfDestroyed}%</div>
       </div>
       <Doughnut data={data} options={options} />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
 import axios from "axios";
 import CommonDoughnut from "./charts/CommonDoughnut";
 
@@ -8,22 +7,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const [destroyed, setDestroyed] = useState({});
-  const [remains, setRemains] = useState({});
 
   useEffect(() => {
-    getBeginningTotal();
     getTodayStatistic();
   }, []);
-
-  const getBeginningTotal = async () => {
-    const url = "/api/v1/day_statistic/remains";
-    try {
-      const response = await axios.get(url);
-      setRemains(response.data);
-    } catch(error) {
-      console.log(error);
-    }
-  };
 
   const getTodayStatistic = async () => {
     const url = "/api/v1/show/1";
@@ -39,23 +26,25 @@ const Dashboard = () => {
     <div className='global-container container text-center'>
       <div className="row">
         <div className="col">
-          <CommonDoughnut type={'tanks'} destroyed={destroyed} remains={remains} />
+          <CommonDoughnut type={'tanks'} destroyed={destroyed} />
         </div>
-        <div className="col"></div>
         <div className="col">
-          <CommonDoughnut type={'apv'} destroyed={destroyed} remains={remains} />
+          <CommonDoughnut type={'pig_dogs'} destroyed={destroyed} />
+        </div>
+        <div className="col">
+          <CommonDoughnut type={'apv'} destroyed={destroyed} />
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <CommonDoughnut type={'artillery'} destroyed={destroyed} remains={remains} />
+          <CommonDoughnut type={'artillery'} destroyed={destroyed} />
         </div>
         <div className="col">
-          <CommonDoughnut type={'helicopters'} destroyed={destroyed} remains={remains} />
+          <CommonDoughnut type={'helicopters'} destroyed={destroyed} />
         </div>
         <div className="col">
-          <CommonDoughnut type={'aircraft'} destroyed={destroyed} remains={remains} />
+          <CommonDoughnut type={'aircraft'} destroyed={destroyed} />
         </div>
       </div>
     </div>
