@@ -1,0 +1,2 @@
+class DayStatistic < ApplicationRecord
+end
