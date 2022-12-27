@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Resource represents daily statistic of loses
 class DayStatistic < ApplicationRecord
   TOTAL_AT_BEGINNING = {
     pig_dogs: 900_000,

@@ -2,6 +2,7 @@
 
 module Api
   module V1
+    # Resource controller that represents daily statistic of loses
     class DayStatisticController < ApplicationController
       before_action :set_day_static, only: %i[show destroy]
 
