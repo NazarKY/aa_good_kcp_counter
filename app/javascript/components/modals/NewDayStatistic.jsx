@@ -5,7 +5,7 @@ import axios from "axios";
 
 const url = "/api/v1/day_statistic/create";
 
-const NewDayStatistic = ({ show, setShow }) => {
+const NewDayStatistic = ({ show, setShow, setNewDestroyed }) => {
   const [newDayStatistic, setNewDayStatistic] = useState({});
 
   const handleClose = () => setShow(false);
@@ -24,7 +24,9 @@ const NewDayStatistic = ({ show, setShow }) => {
       const response = await axios.post(url, newDayStatistic,
         { headers: { "X-CSRF-Token": token, "Content-Type": "application/json" } }
       );
-      console.log(response.status);
+      handleClose();
+      setNewDestroyed(response.data);
+      console.log(response.data);
     } catch(error) {
       console.log(error);
     }

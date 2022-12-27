@@ -7,13 +7,13 @@ module Api
 
       def create
         day_static = DayStatistic.create!(day_static_params)
-        return render json: day_static if day_static
+        return render(json: day_static, status: :created) if day_static
 
-        render json: day_static.errors
+        render json: day_static.errors, status: :internal_server_error
       end
 
       def show
-        render json: @day_static
+        render json: @day_static, status: :ok
       end
 
       def destroy
@@ -23,7 +23,7 @@ module Api
       private
 
       def day_static_params
-        params.require(:day_statistic).permit(:pig_dogs, :artillery, :helicopters, :aircraft, :tanks, :apv)
+        params.require(:day_statistic).permit(:pig_dogs, :artillery, :helicopters, :aircraft, :tanks, :apv, :mlrs)
       end
 
       def set_day_static

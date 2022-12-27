@@ -55,7 +55,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <NewDayStatistic show={showAddNew} setShow={setShowAddNew} />
+      <NewDayStatistic show={showAddNew} setShow={setShowAddNew} setNewDestroyed={setDestroyed} />
     </div>
   );
 };
