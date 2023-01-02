@@ -25,7 +25,7 @@ const NewDayStatistic = ({ show, setShow, setNewDestroyed }) => {
         { headers: { "X-CSRF-Token": token, "Content-Type": "application/json" } }
       );
       handleClose();
-      setNewDestroyed(response.data);
+      setNewDestroyed(response.data.current);
       console.log(response.data);
     } catch(error) {
       console.log(error);

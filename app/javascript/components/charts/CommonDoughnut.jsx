@@ -1,6 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { ChartNames, Basic } from '../i18n/common.jsx'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -13,23 +14,25 @@ const totalAtBeginning = {
   apv: 13758
 }
 
-const CommonDoughnut = ({ type, destroyed }) => {
+const CommonDoughnut = ({ type, destroyed, previous, language }) => {
   const percentageOfDestroyed = ((destroyed[type]/totalAtBeginning[type])*100).toFixed( 2 );
   const remains = totalAtBeginning[type] - destroyed[type];
-  const label = type.replace('_', ' ')
+  const label = ChartNames[language][type];
+  const difference = destroyed[type] - previous[type]
+
+  console.log(ChartNames[language][label])
 
   const data = {
-    labels: [`Destroyed: ${destroyed[type]}`, `Remains: ${remains}`],
+    labels: [`${Basic[language]['destroyed']} ${destroyed[type]}`, `${Basic[language]['remains']} ${remains}`],
     datasets: [{
       label: label,
       data: [destroyed[type], remains],
       fill: false,
       lineTension: 0.0,
-      hoverBackgroundColor: ["#fe8a5d", "#56d7a3"],
-      backgroundColor: ["#fdee4B", "#83b1cf"],
+      backgroundColor: ["#fdee4B", "#c6c6c6"],
       borderWidth: 0,
       borderRadius: 5,
-      cutout: 130,
+      cutout: 140,
     }],
   };
 
@@ -45,8 +48,11 @@ const CommonDoughnut = ({ type, destroyed }) => {
     <div className='chart-item'>
       <div className='center-legend'>
         <div className='type-label'>{label}</div>
-        <div className='total'>Total was: <span className='total-number'>{totalAtBeginning[type]}</span></div>
+        <div className='total'>
+          {Basic[language]['was_total']} <span className='total-number'>{totalAtBeginning[type]}</span>
+        </div>
         <div className='percentage'>{percentageOfDestroyed}%</div>
+        <div className='difference'>{difference ? `+${difference}` : ''}</div>
       </div>
 
       <Doughnut data={data} options={options} />
