@@ -5,7 +5,7 @@ import axios from "axios";
 
 const url = "/api/v1/day_statistic/create";
 
-const NewDayStatistic = ({ show, setShow, setNewDestroyed }) => {
+const NewDayStatistic = ({ show, setShow, setNewDestroyed, setNewPrevious }) => {
   const [newDayStatistic, setNewDayStatistic] = useState({});
 
   const handleClose = () => setShow(false);
@@ -26,7 +26,7 @@ const NewDayStatistic = ({ show, setShow, setNewDestroyed }) => {
       );
       handleClose();
       setNewDestroyed(response.data.current);
-      console.log(response.data);
+      setNewPrevious(response.data.previous);
     } catch(error) {
       console.log(error);
     }
