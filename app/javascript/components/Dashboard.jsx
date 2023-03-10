@@ -63,7 +63,7 @@ const Dashboard = () => {
       </div>
 
       <NewDayStatistic show={showAddNew} setShow={setShowAddNew} setNewDestroyed={setDestroyed}
-                       setNewPrevious={setPrevious} />
+                       setNewPrevious={setPrevious} destroyed={destroyed} />
     </div>
   );
 };

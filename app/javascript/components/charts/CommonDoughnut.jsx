@@ -7,31 +7,32 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const totalAtBeginning = {
   pig_dogs: 900000,
-  artillery: 5689,
+  artillery: 5899,
   helicopters: 961,
-  aircraft: 1379,
-  tanks: 3300,
-  apv: 13758
+  aircraft: 1391,
+  tanks: 3417,
+  apv: 7272
 }
 
 const CommonDoughnut = ({ type, destroyed, previous, language }) => {
   const percentageOfDestroyed = ((destroyed[type]/totalAtBeginning[type])*100).toFixed( 2 );
-  const remains = totalAtBeginning[type] - destroyed[type];
   const label = ChartNames[language][type];
   const difference = destroyed[type] - previous[type]
+  const remains = totalAtBeginning[type] - destroyed[type];
 
-  console.log(ChartNames[language][label])
+  const graphRemains = remains < 0 ? 0 : remains;
+  const borderRadius = remains < 0 ? 0 : 5;
 
   const data = {
     labels: [`${Basic[language]['destroyed']} ${destroyed[type]}`, `${Basic[language]['remains']} ${remains}`],
     datasets: [{
       label: label,
-      data: [destroyed[type], remains],
+      data: [destroyed[type], graphRemains],
       fill: false,
       lineTension: 0.0,
       backgroundColor: ["#fdee4B", "#c6c6c6"],
       borderWidth: 0,
-      borderRadius: 5,
+      borderRadius: borderRadius,
       cutout: 140,
     }],
   };
